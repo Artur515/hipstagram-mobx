@@ -1,16 +1,16 @@
 import './App.css';
-import Auth from "./pages/auth/Auth";
-import {BrowserRouter, Route} from "react-router-dom";
-import Application from "./application/Application";
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./components/appRouter/AppRouter";
+import NavBar from "./components/navBar/NavBar";
 
-function App() {
+
+
+const App = () => {
     return (
-        <div className="App">
-            <BrowserRouter>
-                <Route  path='/' component={Auth}/>
-                <Route exact path='/users' component={Application}/>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <NavBar/>
+            <AppRouter/>
+        </BrowserRouter>
     );
 }
 

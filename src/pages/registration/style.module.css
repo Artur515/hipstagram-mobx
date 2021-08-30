@@ -1,0 +1,11 @@
+.form_required {
+    color: red;
+    margin: 15px 0 0 0;
+}
+
+.error{
+    position: absolute;
+    top: -25%;
+    left: 30%;
+    color: red;
+}
