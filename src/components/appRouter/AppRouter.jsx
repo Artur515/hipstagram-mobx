@@ -5,6 +5,7 @@ import {CURRENT_USER_ROUTE, LOGIN_ROUTE} from "../../utils/consts";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
+
 const AppRouter = observer(() => {
     const {auth} = useContext(Context)
 

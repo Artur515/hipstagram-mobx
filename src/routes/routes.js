@@ -12,6 +12,7 @@ import User from "../pages/user/User";
 import Users from "../pages/users/Users";
 import Setting from "../pages/setting/Setting";
 
+
 export const authRoutes = [
     {
         path: REGISTRATION_ROUTE,
@@ -34,7 +35,7 @@ export const hipstaRoutes = [
         Component: Users
     },
     {
-        path: USER_ID_ROUTE+'/:id',
+        path: USER_ID_ROUTE + '/:id',
         Component: User
     },
     {

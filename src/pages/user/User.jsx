@@ -6,8 +6,6 @@ import {observer} from "mobx-react-lite";
 
 const User = observer(({login, email, id, avatar, isFollow,handleFollowUnFollowUser}) => {
 
-
-
     return (
         <Card className={style.card}>
             <Card.Img className={style.card_img} variant="top" src={avatar ? avatar : userImage}/>

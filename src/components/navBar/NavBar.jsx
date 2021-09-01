@@ -12,6 +12,7 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import {logOutCurrentUser} from "../../api/hipstagramService";
 
+
 const NavBar = observer(() => {
 
 
@@ -43,6 +44,7 @@ const NavBar = observer(() => {
                                 onClick={() => history.push(LOGIN_ROUTE)}>Login</Button>
                     </Nav>
                 }
+
             </Container>
         </Navbar>
     );

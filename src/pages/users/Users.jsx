@@ -5,10 +5,11 @@ import {followUser, getAllUsers} from "../../api/hipstagramService";
 import {Container} from "react-bootstrap";
 import Loader from "../../helpers/loader/Loader";
 import User from "../user/User";
+import Search from "../../components/search/Search";
 
 const Users = observer(() => {
-
     const {hipsta} = useContext(Context)
+
 
     useEffect(() => {
         getAllUsers().then((data) => hipsta.setUsers(data))
@@ -23,9 +24,11 @@ const Users = observer(() => {
                     .then((data) => hipsta.setUsers(data)))
     }
 
+
     console.log(hipsta)
     return (
         <Container className='d-flex flex-wrap justify-content-around p-2'>
+            <Search/>
             {hipsta.users === null ? <Loader/> : hipsta.users.map((user) => {
                 return <User key={user._id}
                              avatar={user.avatar}

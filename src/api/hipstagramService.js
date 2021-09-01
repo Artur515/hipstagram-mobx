@@ -33,6 +33,11 @@ export const updateCurrentUser = async (newData) => {
     return data
 }
 
+export const getUserByLogin = async (query) => {
+    const {data} = await host.get('/users/?search=' + query)
+    return data
+}
+
 export const getUserById = async (id) => {
     const {data} = await host.get('/users/' + id)
     return data
