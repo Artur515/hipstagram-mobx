@@ -44,8 +44,8 @@ export const updatePassword = async (passwordData) => {
 }
 
 export const followUser = async (id) => {
-    const {data} = await host.get('/users/follow/' + id)
-    return data
+    const response = await host.get('/users/follow/' + id)
+    return response
 }
 
 export const createPost = async (postData) => {

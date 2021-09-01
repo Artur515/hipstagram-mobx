@@ -2,6 +2,8 @@ import React, {useContext, useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
 import {getCurrentUser} from "../../api/hipstagramService";
+import Loader from "../../helpers/loader/Loader";
+import {Container} from "react-bootstrap";
 
 const CurrentUser = observer(() => {
     const {hipsta} = useContext(Context)
@@ -15,9 +17,9 @@ const CurrentUser = observer(() => {
 
 
     return (
-        <div>
-            {hipsta.currentUser === null ? <div>Loading</div> : <div>{hipsta.currentUser.email}</div>}
-        </div>
+        <Container>
+            {hipsta.currentUser === null ? <Loader/> : <div>{hipsta.currentUser.email}</div>}
+        </Container>
     );
 });
 

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Button, Form, Row} from "react-bootstrap";
 import {NavLink, useHistory} from "react-router-dom";
 import {CURRENT_USER_ROUTE, REGISTRATION_ROUTE} from "../../utils/consts";
@@ -8,8 +8,10 @@ import {useForm} from "react-hook-form";
 import {loginCurrentUser} from "../../api/hipstagramService";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
+import Loader from "../../helpers/loader/Loader";
 
 const Login = observer(() => {
+    const [load, setLoad] = useState(false)
 
     const history = useHistory()
     const {register, handleSubmit, formState: {errors}} = useForm();
@@ -18,6 +20,7 @@ const Login = observer(() => {
     console.log(auth)
     const onSubmit = data => {
         const {login, password} = data
+        setLoad(true)
         loginCurrentUser(login, password)
             .then(response => {
                 // console.log(response.data)
@@ -31,7 +34,7 @@ const Login = observer(() => {
             }).catch((error) => {
             auth.setError(error.message)
             auth.setIsAuth(false)
-        })
+        }).finally(() => setLoad(false))
     };
 
 
@@ -59,6 +62,7 @@ const Login = observer(() => {
                 <div>need to <NavLink to={REGISTRATION_ROUTE}>Registration</NavLink></div>
                 <Button type="submit" variant={"outline-dark"}>Login</Button>
             </Row>
+            {load && <Loader/>}
         </Form>
     );
 });
