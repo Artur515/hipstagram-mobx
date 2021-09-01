@@ -2,7 +2,6 @@ import {makeAutoObservable} from "mobx";
 
 
 export default class AuthStore {
-
     constructor() {
         this._isAuth = false
         this._user = {}

@@ -1,16 +1,26 @@
 import React, {useContext} from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
-import {NavLink} from "react-router-dom";
-import {CURRENT_USER_ROUTE, SEARCH_USERS_ROUTE, UPDATE_CURRENT_USER_ROUTE} from "../../utils/consts";
+import {NavLink, useHistory} from "react-router-dom";
+import {
+    CURRENT_USER_ROUTE, LOGIN_ROUTE,
+    REGISTRATION_ROUTE,
+    SEARCH_USERS_ROUTE,
+    UPDATE_CURRENT_USER_ROUTE
+} from "../../utils/consts";
 import style from './style.module.css'
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import {logOutCurrentUser} from "../../api/hipstagramService";
 
 const NavBar = observer(() => {
+
+
     const {auth} = useContext(Context)
+    const history = useHistory()
+
     const handleLogOut = () => {
         logOutCurrentUser()
+        auth.setUser({})
         auth.setIsAuth(false)
     }
 
@@ -27,7 +37,10 @@ const NavBar = observer(() => {
                     </Nav>
                     :
                     <Nav>
-                        <Button className='ml-3' variant={"outline-dark"}>Authorization</Button>
+                        <Button className='ml-3' variant={"outline-dark"}
+                                onClick={() => history.push(REGISTRATION_ROUTE)}>Registration</Button>
+                        <Button className='ml-3' variant={"outline-dark"}
+                                onClick={() => history.push(LOGIN_ROUTE)}>Login</Button>
                     </Nav>
                 }
             </Container>

@@ -16,6 +16,7 @@ const Registration = observer(() => {
 
     const onSubmit = data => {
         const {login, email, password} = data
+
         registrationCurrentUser(login, email, password)
             .then(response => response.data.id && history.push(LOGIN_ROUTE))
             .catch((error) => auth.setError(error.message))

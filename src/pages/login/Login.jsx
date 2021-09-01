@@ -15,16 +15,17 @@ const Login = observer(() => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const {auth} = useContext(Context)
 
-
+    console.log(auth)
     const onSubmit = data => {
         const {login, password} = data
         loginCurrentUser(login, password)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 if (response.data.access_token) {
-                    localStorage.setItem('currentUserToken', JSON.stringify(response.data.access_token))
+                    // localStorage.setItem('currentUserToken', JSON.stringify(response.data.access_token))
                     auth.setError('')
                     auth.setIsAuth(true)
+                    auth.setUser(response.data.access_token)
                     history.push(CURRENT_USER_ROUTE)
                 }
             }).catch((error) => {

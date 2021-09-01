@@ -1,8 +1,6 @@
 import axios from "axios";
-import {headers} from "./currentUser";
+import {API_URL, host} from "./currentUser";
 
-
-export const API_URL = 'https://hipstagram-api.herokuapp.com'
 
 export const registrationCurrentUser = async (login, email, password) => {
     const response = await axios.post(API_URL + '/auth/registration', {login, email, password})
@@ -12,6 +10,7 @@ export const registrationCurrentUser = async (login, email, password) => {
 
 export const loginCurrentUser = async (login, password) => {
     const response = await axios.post(API_URL + '/auth/login', {login, password})
+    localStorage.setItem('currentUserToken', response.data.access_token)
     return response
 }
 
@@ -20,67 +19,68 @@ export const logOutCurrentUser = () => {
 }
 
 export const getCurrentUser = async () => {
-    const response = axios.get(API_URL + '/users/current', {headers: headers})
-    return response
-}
-export const getAllUsers = async () => {
-    const response = axios.get(API_URL + '/users', {headers: headers})
-    return response
+    const {data} = await host.get('/users/current')
+    return data
 }
 
-export const updateCurrentUser = async (data) => {
-    const response = axios.patch(API_URL + '/users/current', data, {headers: headers})
-    return response
+export const getAllUsers = async () => {
+    const {data} = await host.get('/users')
+    return data
+}
+
+export const updateCurrentUser = async (newData) => {
+    const {data} = await host.patch('/users/current', newData)
+    return data
 }
 
 export const getUserById = async (id) => {
-    const response = axios.get(API_URL + '/users/' + id, {headers: headers})
-    return response
+    const {data} = await host.get('/users/' + id)
+    return data
 }
 
-export const updatePassword = async (data) => {
-    const response = axios.post(API_URL + '/auth/updatePassword', data, {headers: headers})
-    return response
+export const updatePassword = async (passwordData) => {
+    const {data} = await host.post('/auth/updatePassword', passwordData)
+    return data
 }
 
 export const followUser = async (id) => {
-    const response = axios.get(API_URL + '/users/follow/' + id, {headers: headers})
-    return response
+    const {data} = await host.get('/users/follow/' + id)
+    return data
 }
 
-export const createPost = async (data) => {
-    const response = axios.post(API_URL + "/posts", data, {headers: headers})
-    return response
+export const createPost = async (postData) => {
+    const {data} = await host.post('/posts', postData)
+    return data
 }
 
 export const likePost = async (id) => {
-    const response = axios.get(API_URL + '/posts/like/' + id, {headers: headers})
-    return response
+    const {data} = await host.get('/posts/like/' + id)
+    return data
 }
 
 export const getFollowersAndFollowingOfUserByUserId = async (id) => {
-    const response = axios.get(API_URL + '/users/followersAndFollowing/' + id, {headers: headers})
-    return response
+    const {data} = await host.get('/users/followersAndFollowing/' + id)
+    return data
 }
 
-export const createComment = async (data) => {
-    const response = axios.post(API_URL + '/comments', data, {headers: headers})
-    return response
+export const createComment = async (commentData) => {
+    const {data} = await host.post('/comments', commentData)
+    return data
 }
 
 
 export const getCommentsByPostId = async (id) => {
-    const response = axios.get(API_URL + '/comments/' + id, {headers: headers})
-    return response
+    const {data} = await host.get('/comments/' + id)
+    return data
 }
 
-export const updateCommentText = async (id, data) => {
-    const response = axios.patch(API_URL + '/comments/' + id, {data}, {headers: headers})
-    return response
+export const updateCommentText = async (id, commentData) => {
+    const {data} = await host.patch('/comments/' + id, {commentData})
+    return data
 }
 
 
 export const deleteCommentByCommentId = async (id) => {
-    const response = axios.delete(API_URL + '/comments/' + id, {headers: headers})
-    return response
+    const {data} = await host.delete('/comments/' + id)
+    return data
 }

@@ -1,28 +1,44 @@
 import {makeAutoObservable} from "mobx";
 
 export default class HipstaStore {
-
     constructor() {
-        this._users = []
-        this._currentUser = []
-        this._userById = []
+        this._currentUser = null
+        this._users = null
+        this._userById = null
+        this._error = []
         makeAutoObservable(this)
     }
 
-    setIsAuth(bool) {
-        this._isAuth = bool
+    setCurrentUser(user) {
+        this._currentUser = user
     }
 
-    setUser(user) {
-        this._user = user
+    setUsers(users) {
+        this._users = users
+    }
+
+    setUserById(userId) {
+        this._userById = userId
+    }
+
+    setError(error) {
+        this._error = error
     }
 
     //computed function
-    get isAuth() {
-        return this._isAuth
+    get currentUser() {
+        return this._currentUser
     }
 
-    get user() {
-        return this._user
+    get users() {
+        return this._users
+    }
+
+    get userById() {
+        return this._userById
+    }
+
+    get error() {
+        return this._error
     }
 }
