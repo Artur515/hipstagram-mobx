@@ -59,8 +59,8 @@ export const createPost = async (postData) => {
 }
 
 export const likePost = async (id) => {
-    const {data} = await host.get('/posts/like/' + id)
-    return data
+    const response = await host.get('/posts/like/' + id)
+    return response
 }
 
 export const getFollowersAndFollowingOfUserByUserId = async (id) => {

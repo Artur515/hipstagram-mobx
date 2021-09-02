@@ -8,9 +8,9 @@ import {
 } from "../utils/consts";
 import Auth from "../pages/auth/Auth";
 import CurrentUser from "../pages/current_user/CurrentUser";
-import User from "../pages/user/User";
 import Users from "../pages/users/Users";
 import Setting from "../pages/setting/Setting";
+import UserProfile from "../pages/userProfile/UserProfile";
 
 
 export const authRoutes = [
@@ -35,8 +35,8 @@ export const hipstaRoutes = [
         Component: Users
     },
     {
-        path: USER_ID_ROUTE + '/:id',
-        Component: User
+        path: USER_ID_ROUTE + `/:userId`,
+        Component: UserProfile
     },
     {
         path: UPDATE_CURRENT_USER_ROUTE,

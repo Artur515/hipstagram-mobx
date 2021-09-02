@@ -25,7 +25,6 @@ const Users = observer(() => {
     }
 
 
-    console.log(hipsta)
     return (
         <Container className='d-flex flex-wrap justify-content-around p-2'>
             <Search/>

@@ -21,6 +21,7 @@ export default class HipstaStore {
         this._userById = userId
     }
 
+
     setError(error) {
         this._error = error
     }
@@ -37,6 +38,7 @@ export default class HipstaStore {
     get userById() {
         return this._userById
     }
+
 
     get error() {
         return this._error
