@@ -13,7 +13,6 @@ const UserProfile = observer(() => {
     return (
         <Container>
             {hipsta.userById === null ? <Loader/> :
-
                 <Card className="text-center">
                     <Card.Header>{hipsta.userById.login}</Card.Header>
                     <Card.Body className='d-flex flex-wrap'>

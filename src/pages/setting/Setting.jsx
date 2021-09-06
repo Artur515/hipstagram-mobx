@@ -1,29 +1,34 @@
 import React from 'react';
-import {Button, Container, Form} from "react-bootstrap";
+import {Button, Card, Container, Form} from "react-bootstrap";
+import UpdatePassword from "../../components/updatePassword/UpdatePassword";
 
 const Setting = () => {
     return (
         <Container>
-            <Form>
+            <Card className='m-3'>
+            <Form  className='text-lg-center m-4'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>First name</Form.Label>
+                    <Form.Control className='mt-4' placeholder="Enter your name"/>
+                    <Form.Label>Last name</Form.Label>
+                    <Form.Control className='mt-4' placeholder="Enter your last name"/>
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email"/>
-                    <Form.Text style={{color: 'red'}}>
+                    <Form.Control className='mt-4' type="email" placeholder="Enter email"/>
+                    <Form.Text style={{color: 'red', position: 'relative'}}>
                         We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password"/>
+                <Form.Group controlId="formFile" className="mb-4">
+                    <Form.Label>Change file</Form.Label>
+                    <Form.Control className='p-1' type="file"/>
                 </Form.Group>
-                <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Label>Default file input example</Form.Label>
-                    <Form.Control type="file"/>
-                </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="outline-dark" type="submit">
                     Submit
                 </Button>
             </Form>
+            </Card>
+            <UpdatePassword/>
+
         </Container>
     );
 };

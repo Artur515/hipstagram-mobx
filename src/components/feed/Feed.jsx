@@ -9,16 +9,18 @@ import {likePost} from "../../api/hipstagramService";
 const Feed = observer(({post, id}) => {
     const {hipsta} = useContext(Context)
     const [myLike, setMyLike] = useState(() => {
-        let my = post.likes.filter(like => like._id === hipsta.currentUser.id)
+        let my = post.likes.filter(like => like._id === hipsta.currentUser?.id)
         return my.length ? 'liked' : 'unliked'
     })
 
+
+    console.log(post)
 
     const handleLikePost = (id) => {
         likePost(id).then(response => response.data.status === 'liked' ?
             setMyLike('liked') : setMyLike('unliked'))
     }
-    console.log(myLike)
+    // console.log(myLike)
 
     return (
         <Container>
@@ -30,8 +32,8 @@ const Feed = observer(({post, id}) => {
                     </Card.Text>
                     <Card.Body>
                      {myLike === 'liked' ?
-                        <BsHeartFill onClick={() => handleLikePost(post._id)}/> :
-                        <BsHeart onClick={() => handleLikePost(post._id)}/>}
+                        <BsHeartFill  className='cursor' onClick={() => handleLikePost(post._id)}/> :
+                        <BsHeart  className='cursor' onClick={() => handleLikePost(post._id)}/>}
                     </Card.Body>
                 </Card.Body>
             </Card>
