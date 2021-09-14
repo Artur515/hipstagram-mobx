@@ -6,11 +6,11 @@ const UpdatePassword = () => {
         <Container>
             <Card className='mt-4'>
                 <Form className='text-lg-center m-4'>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password"/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Confirm Password"/>
                     </Form.Group>
